@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KODAFF | Solicitar Orçamento</title>
+    
+    <!-- Fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo span {
+            color: #00d4ff;
+            background: none;
+        }
+
+        /* Formulário */
+        .form-section {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+
+        .form-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 48px 40px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-card h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .form-card .sub {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ddd;
+        }
+
+        label .required {
+            color: #ff4d4d;
+            margin-left: 4px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            padding: 16px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 24px;
+            border: 1px solid #00d4ff;
+            margin-top: 20px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #1f1f1f;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 32px 24px;
+            }
+            .form-card h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-area">
+                <img src="logomarca.png" alt="KODAFF Logo" class="logo-img">
+                <div class="logo">KODAFF<span>.</span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <h1>Solicitar Orçamento</h1>
+                <div class="sub">Preencha os dados abaixo e entraremos em contato</div>
+
+                <form id="orcamentoForm" action="mailto:atendimento@kodaff.com" method="POST" enctype="text/plain">
+                    <div class="form-group">
+                        <label>Nome da Empresa / Razão Social <span class="required">*</span></label>
+                        <input type="text" id="empresa" name="Empresa" required>
+                        <div class="error-message" id="errorEmpresa">Informe o nome da empresa</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>CNPJ <span class="required">*</span></label>
+                        <input type="text" id="cnpj" name="CNPJ" placeholder="00.000.000/0001-00" maxlength="18" required>
+                        <div class="error-message" id="errorCnpj">CNPJ inválido (formato: 00.000.000/0001-00)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nome do Solicitante <span class="required">*</span></label>
+                        <input type="text" id="nome" name="Nome" required>
+                        <div class="error-message" id="errorNome">Informe seu nome completo</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone (WhatsApp) <span class="required">*</span></label>
+                        <input type="tel" id="telefone" name="Telefone" placeholder="(11) 99999-9999" required>
+                        <div class="error-message" id="errorTelefone">Informe um telefone válido</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensagem (opcional)</label>
+                        <textarea rows="4" id="mensagem" name="Mensagem" placeholder="Descreva brevemente o que você precisa..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Orçamento <i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 10px;"></i><br>
+                    Solicitação enviada com sucesso!<br>Entraremos em contato em breve.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 14px;">&copy; 2025 KODAFF - Inovação em software e marketing.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Máscara para CNPJ
+        function mascaraCNPJ(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 14) value = value.slice(0, 14);
+            
+            // Aplica a máscara: 00.000.000/0001-00
+            if (value.length >= 3) value = value.slice(0, 2) + '.' + value.slice(2);
+            if (value.length >= 7) value = value.slice(0, 6) + '.' + value.slice(6);
+            if (value.length >= 11) value = value.slice(0, 10) + '/' + value.slice(10);
+            if (value.length >= 16) value = value.slice(0, 15) + '-' + value.slice(15);
+            
+            input.value = value;
+        }
+
+        // Validação de CNPJ (dígitos verificadores)
+        function validarCNPJ(cnpj) {
+            cnpj = cnpj.replace(/\D/g, '');
+            if (cnpj.length !== 14) return false;
+            
+            // Elimina CNPJs inválidos conhecidos
+            if (/^(\d)\1{13}$/.test(cnpj)) return false;
+            
+            let tamanho = cnpj.length - 2;
+            let numeros = cnpj.substring(0, tamanho);
+            let digitos = cnpj.substring(tamanho);
+            let soma = 0;
+            let pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(0)) return false;
+            
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            return resultado == digitos.charAt(1);
+        }
+
+        // Máscara para telefone
+        function mascaraTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length >= 3) value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+            if (value.length >= 10) value = value.slice(0, 10) + '-' + value.slice(10);
+            
+            input.value = value;
+        }
+
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            mascaraCNPJ(this);
+        });
+
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            mascaraTelefone(this);
+        });
+
+        document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Limpa mensagens de erro
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+            
+            let isValid = true;
+            
+            // Valida empresa
+            const empresa = document.getElementById('empresa').value.trim();
+            if (empresa === '') {
+                document.getElementById('errorEmpresa').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Valida CNPJ
+            const cnpj = document.getElementById('cnpj').value;
+            if (!validarCNPJ(cnpj)) {
+                document.getElementById('errorCnpj').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Valida nome
+            const nome = document.getElementById('nome').value.trim();
+            if (nome === '') {
+                document.getElementById('errorNome').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Valida telefone
+            const telefone = document.getElementById('telefone').value.replace(/\D/g, '');
+            if (telefone.length < 10 || telefone.length > 11) {
+                document.getElementById('errorTelefone').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Monta o corpo do e-mail
+                const empresaVal = document.getElementById('empresa').value;
+                const cnpjVal = document.getElementById('cnpj').value;
+                const nomeVal = document.getElementById('nome').value;
+                const telefoneVal = document.getElementById('telefone').value;
+                const mensagemVal = document.getElementById('mensagem').value || 'Não informado';
+                
+                const subject = `Orçamento - ${empresaVal}`;
+                const body = `Empresa: ${empresaVal}%0A%0ACNPJ: ${cnpjVal}%0A%0ASolicitante: ${nomeVal}%0A%0ATelefone: ${telefoneVal}%0A%0AMensagem: ${mensagemVal}`;
+                
+                // Abre o cliente de e-mail
+                window.location.href = `mailto:atendimento@kodaff.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+                
+                // Mostra mensagem de sucesso
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Limpa o formulário
+                document.getElementById('orcamentoForm').reset();
+                
+                // Esconde a mensagem após 5 segundos
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
