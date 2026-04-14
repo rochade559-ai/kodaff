@@ -89,22 +89,6 @@
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
         }
 
-        .btn-voltar {
-            background: rgba(255,255,255,0.1);
-            padding: 12px 28px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-voltar:hover {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.05);
-        }
-
         .orcamento-section {
             padding-top: 140px;
             padding-bottom: 80px;
@@ -185,6 +169,13 @@
             color: rgba(255,255,255,0.4);
         }
 
+        .error-message {
+            color: #ff4444;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
         .form-row {
             display: flex;
             gap: 20px;
@@ -233,10 +224,6 @@
             font-weight: 600;
         }
 
-        .contato-info a:hover {
-            text-decoration: underline;
-        }
-
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -256,11 +243,6 @@
             z-index: 99;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #128C7E;
-        }
-
         footer {
             background: #050505;
             padding: 40px 0 30px;
@@ -270,22 +252,11 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .logo img {
-                height: 40px;
-            }
-            .orcamento-header h1 {
-                font-size: 32px;
-            }
-            .form-card {
-                padding: 25px;
-            }
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
+            .nav-links { display: none; }
+            .logo img { height: 40px; }
+            .orcamento-header h1 { font-size: 32px; }
+            .form-card { padding: 25px; }
+            .form-row { flex-direction: column; gap: 0; }
         }
     </style>
 </head>
@@ -294,9 +265,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
-                    <img src="logomarca.png" alt="KODAFF">
-                </div>
+                <div class="logo"><img src="logomarca.png" alt="KODAFF"></div>
                 <ul class="nav-links">
                     <li><a href="index.html">INÍCIO</a></li>
                     <li><a href="index.html#video">APRESENTAÇÃO</a></li>
@@ -318,7 +287,7 @@
                 </div>
 
                 <div class="form-card">
-                    <form action="https://formsubmit.co/atendimento@kodaff.com" method="POST">
+                    <form id="formOrcamento" action="https://formsubmit.co/atendimento@kodaff.com" method="POST">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://kodaff.com/obrigado.html">
                         <input type="hidden" name="_subject" value="Novo orçamento KODAFF">
@@ -337,7 +306,8 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>CNPJ <span class="required">*</span></label>
-                                <input type="text" name="cnpj" placeholder="00.000.000/0001-00" required>
+                                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" required>
+                                <div id="cnpjError" class="error-message">CNPJ inválido. Digite um CNPJ real (apenas números ou formato padrão).</div>
                             </div>
                             <div class="form-group">
                                 <label>Telefone <span class="required">*</span></label>
@@ -383,9 +353,7 @@
 
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <img src="logomarca.png" alt="KODAFF" style="height: 50px; width: auto; margin-bottom: 20px;">
-            </div>
+            <div class="footer-logo"><img src="logomarca.png" alt="KODAFF" style="height: 50px; width: auto; margin-bottom: 20px;"></div>
             <p>TECNOLOGIA E MARKETING QUE GERAM RESULTADOS REAIS.</p>
             <div class="social-icons" style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
                 <a href="#" style="color: white; font-size: 28px;"><i class="fab fa-instagram"></i></a>
@@ -402,6 +370,74 @@
     </a>
 
     <script>
+        // Função de validação de CNPJ (algoritmo oficial)
+        function validarCNPJ(cnpj) {
+            // Remove caracteres especiais
+            cnpj = cnpj.replace(/[^\d]+/g, '');
+            
+            // Verifica se tem 14 dígitos
+            if (cnpj.length !== 14) return false;
+            
+            // Elimina CNPJs inválidos conhecidos (todos dígitos iguais)
+            if (/^(\d)\1{13}$/.test(cnpj)) return false;
+            
+            // Valida primeiro dígito verificador
+            let tamanho = cnpj.length - 2;
+            let numeros = cnpj.substring(0, tamanho);
+            let digitos = cnpj.substring(tamanho);
+            let soma = 0;
+            let pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(0)) return false;
+            
+            // Valida segundo dígito verificador
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(1)) return false;
+            
+            return true;
+        }
+
+        // Adiciona evento de validação ao formulário
+        document.getElementById('formOrcamento').addEventListener('submit', function(e) {
+            const cnpjInput = document.getElementById('cnpj');
+            const cnpjValue = cnpjInput.value;
+            const errorDiv = document.getElementById('cnpjError');
+            
+            if (!validarCNPJ(cnpjValue)) {
+                e.preventDefault(); // Impede o envio
+                errorDiv.style.display = 'block';
+                cnpjInput.style.borderColor = '#ff4444';
+            } else {
+                errorDiv.style.display = 'none';
+                cnpjInput.style.borderColor = 'rgba(255,255,255,0.15)';
+            }
+        });
+
+        // Remove a mensagem de erro quando o usuário corrigir o CNPJ
+        document.getElementById('cnpj').addEventListener('input', function() {
+            const errorDiv = document.getElementById('cnpjError');
+            if (errorDiv.style.display === 'block') {
+                errorDiv.style.display = 'none';
+                this.style.borderColor = 'rgba(255,255,255,0.15)';
+            }
+        });
+
         // Scroll suave para links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
