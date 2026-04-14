@@ -72,7 +72,7 @@
             color: #00d4ff;
         }
 
-        .btn-cta {
+        .btn-voltar {
             background: linear-gradient(135deg, #00d4ff, #0099cc);
             padding: 12px 28px;
             border-radius: 40px;
@@ -80,11 +80,9 @@
             font-weight: 600;
             text-decoration: none;
             transition: 0.3s;
-            border: none;
-            cursor: pointer;
         }
 
-        .btn-cta:hover {
+        .btn-voltar:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
         }
@@ -142,9 +140,7 @@
             margin-left: 4px;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-control {
             width: 100%;
             padding: 14px 16px;
             background: rgba(255,255,255,0.08);
@@ -156,16 +152,13 @@
             transition: 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-control:focus {
             outline: none;
             border-color: #00d4ff;
             background: rgba(255,255,255,0.12);
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
+        .form-control::placeholder {
             color: rgba(255,255,255,0.4);
         }
 
@@ -182,7 +175,7 @@
             flex-wrap: wrap;
         }
 
-        .form-row .form-group {
+        .form-row .col {
             flex: 1;
         }
 
@@ -194,8 +187,6 @@
             color: white;
             font-weight: 700;
             font-size: 18px;
-            text-decoration: none;
-            transition: 0.3s;
             border: none;
             cursor: pointer;
             margin-top: 10px;
@@ -273,7 +264,7 @@
                     <li><a href="index.html#projetos">PROJETOS</a></li>
                     <li><a href="index.html#clientes">CLIENTES</a></li>
                 </ul>
-                <a href="index.html#contato" class="btn-cta">VOLTAR</a>
+                <a href="index.html#contato" class="btn-voltar">VOLTAR</a>
             </nav>
         </div>
     </header>
@@ -287,42 +278,42 @@
                 </div>
 
                 <div class="form-card">
-                    <form id="formOrcamento" action="https://formsubmit.co/atendimento@kodaff.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
+                    <form target="_blank" action="https://formsubmit.co/atendimento@kodaff.com" method="POST">
+                        <input type="hidden" name="_captcha" value="true">
                         <input type="hidden" name="_next" value="https://kodaff.com/obrigado.html">
                         <input type="hidden" name="_subject" value="Novo orçamento KODAFF">
                         
                         <div class="form-row">
-                            <div class="form-group">
+                            <div class="col">
                                 <label>Nome completo <span class="required">*</span></label>
-                                <input type="text" name="nome" placeholder="Digite seu nome" required>
+                                <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" required>
                             </div>
-                            <div class="form-group">
+                            <div class="col">
                                 <label>Empresa</label>
-                                <input type="text" name="empresa" placeholder="Nome da empresa">
+                                <input type="text" name="empresa" class="form-control" placeholder="Nome da empresa">
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group">
+                            <div class="col">
                                 <label>CNPJ <span class="required">*</span></label>
-                                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" required>
-                                <div id="cnpjError" class="error-message">CNPJ inválido. Digite um CNPJ real (apenas números ou formato padrão).</div>
+                                <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="00.000.000/0001-00" maxlength="18" required>
+                                <div id="cnpjError" class="error-message">CNPJ inválido. Digite um CNPJ real.</div>
                             </div>
-                            <div class="form-group">
+                            <div class="col">
                                 <label>Telefone <span class="required">*</span></label>
-                                <input type="tel" name="telefone" placeholder="(11) 99999-9999" required>
+                                <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="(11) 99999-9999" maxlength="15" required>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group">
+                            <div class="col">
                                 <label>E-mail <span class="required">*</span></label>
-                                <input type="email" name="email" placeholder="contato@empresa.com" required>
+                                <input type="email" name="email" class="form-control" placeholder="contato@empresa.com" required>
                             </div>
-                            <div class="form-group">
+                            <div class="col">
                                 <label>Qual serviço você precisa? <span class="required">*</span></label>
-                                <select name="servico" required>
+                                <select name="servico" class="form-control" required>
                                     <option value="">Selecione uma opção</option>
                                     <option>Desenvolvimento Web</option>
                                     <option>Aplicativos Mobile</option>
@@ -336,7 +327,7 @@
 
                         <div class="form-group">
                             <label>Mensagem / Descrição do projeto <span class="required">*</span></label>
-                            <textarea name="mensagem" rows="5" placeholder="Conte-nos sobre sua ideia, objetivos e necessidades..." required></textarea>
+                            <textarea name="mensagem" class="form-control" rows="5" placeholder="Conte-nos sobre sua ideia, objetivos e necessidades..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn-enviar">ENVIAR ORÇAMENTO <i class="fas fa-paper-plane"></i></button>
@@ -370,21 +361,57 @@
     </a>
 
     <script>
-        // Função de validação de CNPJ (algoritmo oficial)
+        // MÁSCARA PARA TELEFONE (formato (11) 99999-9999)
+        function mascaraTelefone(input) {
+            let valor = input.value.replace(/\D/g, '');
+            if (valor.length > 11) valor = valor.slice(0, 11);
+            
+            if (valor.length <= 10) {
+                // Telefone fixo: (11) 9999-9999
+                valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
+                valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+            } else {
+                // Celular: (11) 99999-9999
+                valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
+                valor = valor.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+            input.value = valor;
+        }
+
+        // MÁSCARA PARA CNPJ (formato 00.000.000/0001-00)
+        function mascaraCNPJ(input) {
+            let valor = input.value.replace(/\D/g, '');
+            if (valor.length > 14) valor = valor.slice(0, 14);
+            
+            valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+            
+            input.value = valor;
+        }
+
+        // Aplica máscara ao digitar no campo Telefone
+        const telefoneInput = document.getElementById('telefone');
+        telefoneInput.addEventListener('input', function() {
+            mascaraTelefone(this);
+        });
+
+        // Aplica máscara ao digitar no campo CNPJ
+        const cnpjInput = document.getElementById('cnpj');
+        cnpjInput.addEventListener('input', function() {
+            mascaraCNPJ(this);
+        });
+
+        // VALIDAÇÃO DE CNPJ (algoritmo oficial)
         function validarCNPJ(cnpj) {
-            // Remove caracteres especiais
-            cnpj = cnpj.replace(/[^\d]+/g, '');
+            let valor = cnpj.replace(/[^\d]+/g, '');
+            if (valor.length !== 14) return false;
+            if (/^(\d)\1{13}$/.test(valor)) return false;
             
-            // Verifica se tem 14 dígitos
-            if (cnpj.length !== 14) return false;
-            
-            // Elimina CNPJs inválidos conhecidos (todos dígitos iguais)
-            if (/^(\d)\1{13}$/.test(cnpj)) return false;
-            
-            // Valida primeiro dígito verificador
-            let tamanho = cnpj.length - 2;
-            let numeros = cnpj.substring(0, tamanho);
-            let digitos = cnpj.substring(tamanho);
+            let tamanho = valor.length - 2;
+            let numeros = valor.substring(0, tamanho);
+            let digitos = valor.substring(tamanho);
             let soma = 0;
             let pos = tamanho - 7;
             
@@ -396,9 +423,8 @@
             let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
             if (resultado != digitos.charAt(0)) return false;
             
-            // Valida segundo dígito verificador
             tamanho = tamanho + 1;
-            numeros = cnpj.substring(0, tamanho);
+            numeros = valor.substring(0, tamanho);
             soma = 0;
             pos = tamanho - 7;
             
@@ -413,14 +439,14 @@
             return true;
         }
 
-        // Adiciona evento de validação ao formulário
-        document.getElementById('formOrcamento').addEventListener('submit', function(e) {
+        // Impede envio se CNPJ inválido
+        document.querySelector('form').addEventListener('submit', function(e) {
             const cnpjInput = document.getElementById('cnpj');
             const cnpjValue = cnpjInput.value;
             const errorDiv = document.getElementById('cnpjError');
             
             if (!validarCNPJ(cnpjValue)) {
-                e.preventDefault(); // Impede o envio
+                e.preventDefault();
                 errorDiv.style.display = 'block';
                 cnpjInput.style.borderColor = '#ff4444';
             } else {
@@ -429,26 +455,13 @@
             }
         });
 
-        // Remove a mensagem de erro quando o usuário corrigir o CNPJ
+        // Remove erro ao corrigir
         document.getElementById('cnpj').addEventListener('input', function() {
             const errorDiv = document.getElementById('cnpjError');
             if (errorDiv.style.display === 'block') {
                 errorDiv.style.display = 'none';
                 this.style.borderColor = 'rgba(255,255,255,0.15)';
             }
-        });
-
-        // Scroll suave para links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if(href === "#" || href === "") return;
-                const target = document.querySelector(href);
-                if(target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
         });
     </script>
 </body>
