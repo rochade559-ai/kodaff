@@ -318,37 +318,41 @@
                 </div>
 
                 <div class="form-card">
-                    <form action="#" method="POST">
+                    <form action="https://formsubmit.co/atendimento@kodaff.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://kodaff.com/obrigado.html">
+                        <input type="hidden" name="_subject" value="Novo orçamento KODAFF">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Nome completo <span class="required">*</span></label>
-                                <input type="text" placeholder="Digite seu nome" required>
+                                <input type="text" name="nome" placeholder="Digite seu nome" required>
                             </div>
                             <div class="form-group">
                                 <label>Empresa</label>
-                                <input type="text" placeholder="Nome da empresa">
+                                <input type="text" name="empresa" placeholder="Nome da empresa">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label>CNPJ <span class="required">*</span></label>
-                                <input type="text" placeholder="00.000.000/0001-00" required>
+                                <input type="text" name="cnpj" placeholder="00.000.000/0001-00" required>
                             </div>
                             <div class="form-group">
                                 <label>Telefone <span class="required">*</span></label>
-                                <input type="tel" placeholder="(11) 99999-9999" required>
+                                <input type="tel" name="telefone" placeholder="(11) 99999-9999" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label>E-mail <span class="required">*</span></label>
-                                <input type="email" placeholder="contato@empresa.com" required>
+                                <input type="email" name="email" placeholder="contato@empresa.com" required>
                             </div>
                             <div class="form-group">
                                 <label>Qual serviço você precisa? <span class="required">*</span></label>
-                                <select required>
+                                <select name="servico" required>
                                     <option value="">Selecione uma opção</option>
                                     <option>Desenvolvimento Web</option>
                                     <option>Aplicativos Mobile</option>
@@ -362,7 +366,7 @@
 
                         <div class="form-group">
                             <label>Mensagem / Descrição do projeto <span class="required">*</span></label>
-                            <textarea rows="5" placeholder="Conte-nos sobre sua ideia, objetivos e necessidades..." required></textarea>
+                            <textarea name="mensagem" rows="5" placeholder="Conte-nos sobre sua ideia, objetivos e necessidades..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn-enviar">ENVIAR ORÇAMENTO <i class="fas fa-paper-plane"></i></button>
@@ -393,7 +397,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5511970341374" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Gostaria%20de%20solicitar%20um%20orçamento." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
