@@ -2,12 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rochade559-ai.github.io/kodaff/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://rochade559-ai.github.io/kodaff/orcamento.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://kodaff.com/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.kodaff.com/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.90</priority>
   </url>
 </urlset>
