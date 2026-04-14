@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODAFF | Solicitar Orçamento</title>
+    <title>KODAFF | Tecnologia & Marketing</title>
     
     <!-- Fontes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -11,6 +11,9 @@
     <!-- Font Awesome Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- Swiper CSS (para os carrosséis) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
         * {
             margin: 0;
@@ -26,157 +29,296 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
-        /* Header */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            padding: 20px 0;
+            z-index: 1000;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-area {
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .logo-img {
-            height: 40px;
+        .logo img {
+            height: 50px;
             width: auto;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff, #00d4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .logo span {
-            color: #00d4ff;
-            background: none;
-        }
-
-        /* Formulário */
-        .form-section {
-            padding: 120px 0 80px;
-            min-height: 100vh;
-        }
-
-        .form-card {
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 32px;
-            padding: 48px 40px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .form-card h1 {
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .form-card .sub {
-            text-align: center;
-            color: #00d4ff;
-            margin-bottom: 32px;
-            font-size: 16px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        label {
             display: block;
-            margin-bottom: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
             font-weight: 500;
-            color: #ddd;
-        }
-
-        label .required {
-            color: #ff4d4d;
-            margin-left: 4px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
             transition: 0.3s;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+        .nav-links a:hover {
+            color: #00d4ff;
         }
 
-        .btn-submit {
-            width: 100%;
+        .btn-cta {
             background: linear-gradient(135deg, #00d4ff, #0099cc);
-            padding: 16px;
-            border: none;
+            padding: 12px 28px;
             border-radius: 40px;
-            font-weight: 700;
-            font-size: 18px;
-            color: #fff;
-            cursor: pointer;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
             transition: 0.3s;
-            margin-top: 8px;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-submit:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
         }
 
-        .error-message {
-            color: #ff4d4d;
-            font-size: 13px;
-            margin-top: 5px;
-            display: none;
+        .video-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a1f 100%);
         }
 
-        .success-message {
+        .video-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-caption {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 212, 255, 0.1);
+            margin-top: 30px;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .home-content {
+            text-align: center;
+        }
+
+        .home-content h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .home-content h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services {
+            padding: 80px 0;
+            background: #0f0f0f;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
             border-radius: 24px;
-            border: 1px solid #00d4ff;
-            margin-top: 20px;
-            display: none;
+            padding: 40px 30px;
+            width: 280px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            background: rgba(0,212,255,0.05);
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .carousel-section {
+            padding: 60px 0;
+            background: #0a0a0a;
+        }
+
+        .carousel-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 20px 0 50px 0;
+        }
+
+        .swiper-slide {
+            background: #1a1a1a;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            padding: 16px;
+            font-weight: 500;
+            background: #111;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: #00d4ff;
+            background: rgba(0,0,0,0.5);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #00d4ff;
         }
 
         footer {
+            background: #050505;
+            padding: 50px 0 30px;
             text-align: center;
-            padding: 30px 0;
             border-top: 1px solid #1f1f1f;
-            margin-top: 40px;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 28px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #00d4ff;
+            transform: translateY(-5px);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 99;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
         }
 
         @media (max-width: 768px) {
-            .form-card {
-                padding: 32px 24px;
+            .nav-links {
+                display: none;
             }
-            .form-card h1 {
-                font-size: 26px;
+            .logo img {
+                height: 40px;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+            .home-content h1 {
+                font-size: 36px;
+            }
+            .home-content h2 {
+                font-size: 22px;
+            }
+            .footer-logo img {
+                height: 45px;
             }
         }
     </style>
@@ -185,197 +327,172 @@
 
     <header>
         <div class="container">
-            <div class="logo-area">
-                <img src="logomarca.png" alt="KODAFF Logo" class="logo-img">
-                <div class="logo">KODAFF<span>.</span></div>
-            </div>
+            <nav>
+                <div class="logo">
+                    <img src="logomarca.png" alt="KODAFF">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">INÍCIO</a></li>
+                    <li><a href="#video">APRESENTAÇÃO</a></li>
+                    <li><a href="#servicos">SERVIÇOS</a></li>
+                    <li><a href="#projetos">PROJETOS</a></li>
+                    <li><a href="#clientes">CLIENTES</a></li>
+                </ul>
+                <a href="#contato" class="btn-cta">FALE CONOSCO</a>
+            </nav>
         </div>
     </header>
 
-    <section class="form-section">
-        <div class="container">
-            <div class="form-card">
-                <h1>Solicitar Orçamento</h1>
-                <div class="sub">Preencha os dados abaixo e entraremos em contato</div>
-
-                <form id="orcamentoForm" action="mailto:atendimento@kodaff.com" method="POST" enctype="text/plain">
-                    <div class="form-group">
-                        <label>Nome da Empresa / Razão Social <span class="required">*</span></label>
-                        <input type="text" id="empresa" name="Empresa" required>
-                        <div class="error-message" id="errorEmpresa">Informe o nome da empresa</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>CNPJ <span class="required">*</span></label>
-                        <input type="text" id="cnpj" name="CNPJ" placeholder="00.000.000/0001-00" maxlength="18" required>
-                        <div class="error-message" id="errorCnpj">CNPJ inválido (formato: 00.000.000/0001-00)</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nome do Solicitante <span class="required">*</span></label>
-                        <input type="text" id="nome" name="Nome" required>
-                        <div class="error-message" id="errorNome">Informe seu nome completo</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Telefone (WhatsApp) <span class="required">*</span></label>
-                        <input type="tel" id="telefone" name="Telefone" placeholder="(11) 99999-9999" required>
-                        <div class="error-message" id="errorTelefone">Informe um telefone válido</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Mensagem (opcional)</label>
-                        <textarea rows="4" id="mensagem" name="Mensagem" placeholder="Descreva brevemente o que você precisa..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Enviar Orçamento <i class="fas fa-paper-plane"></i></button>
-                </form>
-
-                <div id="successMessage" class="success-message">
-                    <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 10px;"></i><br>
-                    Solicitação enviada com sucesso!<br>Entraremos em contato em breve.
+    <main>
+        <section id="home" class="video-section">
+            <div class="container">
+                <div class="home-content">
+                    <h1>KODAFF</h1>
+                    <h2>Tecnologia que transforma</h2>
+                    <p>Soluções em software, apps e marketing digital de alto impacto.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- SEÇÃO VÍDEO COM SEU ARQUIVO video.mp4 -->
+        <section id="video">
+            <div class="container video-wrapper">
+                <video controls autoplay muted loop playsinline>
+                    <source src="video.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+                <div class="video-caption">
+                    <i class="fas fa-play-circle" style="color: #00d4ff;"></i> ASSISTA À NOSSA APRESENTAÇÃO | INOVAÇÃO E RESULTADOS
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="services">
+            <div class="container">
+                <h2 class="section-title">NOSSOS <span style="color:#00d4ff">SERVIÇOS</span></h2>
+                <p class="section-sub">CRIAÇÃO DE SOFTWARE, APLICATIVOS E ESTRATÉGIAS QUE CONECTAM SUA MARCA AO FUTURO.</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <i class="fas fa-code"></i>
+                        <h3>DESENVOLVIMENTO WEB</h3>
+                        <p>Sites institucionais, sistemas sob medida e plataformas escaláveis.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>APLICATIVOS MOBILE</h3>
+                        <p>Apps nativos e híbridos para iOS e Android, com performance e UX.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>MARKETING DIGITAL</h3>
+                        <p>SEO, tráfego pago, redes sociais e estratégias de crescimento.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-robot"></i>
+                        <h3>AUTOMAÇÃO & IA</h3>
+                        <p>Integração de inteligência artificial e automação de processos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="carousel-section">
+            <div class="container">
+                <h2 class="carousel-title"><i class="fas fa-laptop-code"></i> PROJETOS EM DESTAQUE</h2>
+                <div class="swiper mySwiperProjetos">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/1a1a2e/00d4ff?text=DASHBOARD+ANALYTICS" alt="Dashboard"><div class="slide-caption">DASHBOARD PARA E-COMMERCE</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/16213e/00d4ff?text=APP+DELIVERY" alt="App delivery"><div class="slide-caption">APP DELIVERY KODAFF</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/0f3460/00d4ff?text=PLATAFORMA+CRM" alt="CRM"><div class="slide-caption">SISTEMA CRM PERSONALIZADO</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/1a1a2e/00d4ff?text=SITE+VITRINE" alt="Site institucional"><div class="slide-caption">SITE DE ALTA CONVERSÃO</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/16213e/00d4ff?text=MOBILE+BANKING" alt="Mobile banking"><div class="slide-caption">FINTECH APP</div></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="clientes" class="carousel-section" style="background: #0f0f0f;">
+            <div class="container">
+                <h2 class="carousel-title"><i class="fas fa-handshake"></i> CLIENTES QUE CONFIAM</h2>
+                <div class="swiper mySwiperClientes">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/1e1e2f/00d4ff?text=TECH+CORP" alt="Cliente 1"><div class="slide-caption">TECHCORP SOLUTIONS</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/2d2d44/00d4ff?text=STARTUP+ALPHA" alt="Cliente 2"><div class="slide-caption">STARTUP ALPHA</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/1a1a2e/00d4ff?text=GRUPO+BETA" alt="Cliente 3"><div class="slide-caption">GRUPO BETA</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/16213e/00d4ff?text=AGENCIA+DIGITAL" alt="Cliente 4"><div class="slide-caption">AGÊNCIA MKT360</div></div>
+                        <div class="swiper-slide"><img src="https://placehold.co/600x400/0f3460/00d4ff?text=E-COMMERCE+LIDER" alt="Cliente 5"><div class="slide-caption">E-COMMERCE LÍDER</div></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" style="padding: 70px 0; background: linear-gradient(145deg, #0a0a0a, #061218);">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-size: 38px;">VAMOS CRIAR ALGO INCRÍVEL?</h2>
+                <p style="margin: 20px 0; font-size: 18px; color: #bbb;">Entre em contato e descubra como a KODAFF pode acelerar seu negócio.</p>
+                <a href="orcamento.html" class="btn-cta" style="display: inline-block; margin-top: 10px;">SOLICITAR ORÇAMENTO <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p style="font-size: 14px;">&copy; 2025 KODAFF - Inovação em software e marketing.</p>
+            <div class="footer-logo">
+                <img src="logomarca.png" alt="KODAFF">
+            </div>
+            <p>TECNOLOGIA E MARKETING QUE GERAM RESULTADOS REAIS.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <p style="margin-top: 30px; font-size: 14px;">&copy; 2025 KODAFF - INOVAÇÃO EM SOFTWARE E MARKETING. TODOS OS DIREITOS RESERVADOS.</p>
         </div>
     </footer>
 
+    <a href="https://wa.me/5511970341374" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Máscara para CNPJ
-        function mascaraCNPJ(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value.length > 14) value = value.slice(0, 14);
-            
-            // Aplica a máscara: 00.000.000/0001-00
-            if (value.length >= 3) value = value.slice(0, 2) + '.' + value.slice(2);
-            if (value.length >= 7) value = value.slice(0, 6) + '.' + value.slice(6);
-            if (value.length >= 11) value = value.slice(0, 10) + '/' + value.slice(10);
-            if (value.length >= 16) value = value.slice(0, 15) + '-' + value.slice(15);
-            
-            input.value = value;
-        }
-
-        // Validação de CNPJ (dígitos verificadores)
-        function validarCNPJ(cnpj) {
-            cnpj = cnpj.replace(/\D/g, '');
-            if (cnpj.length !== 14) return false;
-            
-            // Elimina CNPJs inválidos conhecidos
-            if (/^(\d)\1{13}$/.test(cnpj)) return false;
-            
-            let tamanho = cnpj.length - 2;
-            let numeros = cnpj.substring(0, tamanho);
-            let digitos = cnpj.substring(tamanho);
-            let soma = 0;
-            let pos = tamanho - 7;
-            
-            for (let i = tamanho; i >= 1; i--) {
-                soma += numeros.charAt(tamanho - i) * pos--;
-                if (pos < 2) pos = 9;
-            }
-            
-            let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-            if (resultado != digitos.charAt(0)) return false;
-            
-            tamanho = tamanho + 1;
-            numeros = cnpj.substring(0, tamanho);
-            soma = 0;
-            pos = tamanho - 7;
-            
-            for (let i = tamanho; i >= 1; i--) {
-                soma += numeros.charAt(tamanho - i) * pos--;
-                if (pos < 2) pos = 9;
-            }
-            
-            resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-            return resultado == digitos.charAt(1);
-        }
-
-        // Máscara para telefone
-        function mascaraTelefone(input) {
-            let value = input.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            
-            if (value.length >= 3) value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
-            if (value.length >= 10) value = value.slice(0, 10) + '-' + value.slice(10);
-            
-            input.value = value;
-        }
-
-        document.getElementById('cnpj').addEventListener('input', function(e) {
-            mascaraCNPJ(this);
+        const swiperProjetos = new Swiper('.mySwiperProjetos', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3500, disableOnInteraction: false },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
 
-        document.getElementById('telefone').addEventListener('input', function(e) {
-            mascaraTelefone(this);
+        const swiperClientes = new Swiper('.mySwiperClientes', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
 
-        document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Limpa mensagens de erro
-            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
-            
-            let isValid = true;
-            
-            // Valida empresa
-            const empresa = document.getElementById('empresa').value.trim();
-            if (empresa === '') {
-                document.getElementById('errorEmpresa').style.display = 'block';
-                isValid = false;
-            }
-            
-            // Valida CNPJ
-            const cnpj = document.getElementById('cnpj').value;
-            if (!validarCNPJ(cnpj)) {
-                document.getElementById('errorCnpj').style.display = 'block';
-                isValid = false;
-            }
-            
-            // Valida nome
-            const nome = document.getElementById('nome').value.trim();
-            if (nome === '') {
-                document.getElementById('errorNome').style.display = 'block';
-                isValid = false;
-            }
-            
-            // Valida telefone
-            const telefone = document.getElementById('telefone').value.replace(/\D/g, '');
-            if (telefone.length < 10 || telefone.length > 11) {
-                document.getElementById('errorTelefone').style.display = 'block';
-                isValid = false;
-            }
-            
-            if (isValid) {
-                // Monta o corpo do e-mail
-                const empresaVal = document.getElementById('empresa').value;
-                const cnpjVal = document.getElementById('cnpj').value;
-                const nomeVal = document.getElementById('nome').value;
-                const telefoneVal = document.getElementById('telefone').value;
-                const mensagemVal = document.getElementById('mensagem').value || 'Não informado';
-                
-                const subject = `Orçamento - ${empresaVal}`;
-                const body = `Empresa: ${empresaVal}%0A%0ACNPJ: ${cnpjVal}%0A%0ASolicitante: ${nomeVal}%0A%0ATelefone: ${telefoneVal}%0A%0AMensagem: ${mensagemVal}`;
-                
-                // Abre o cliente de e-mail
-                window.location.href = `mailto:atendimento@kodaff.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-                
-                // Mostra mensagem de sucesso
-                document.getElementById('successMessage').style.display = 'block';
-                
-                // Limpa o formulário
-                document.getElementById('orcamentoForm').reset();
-                
-                // Esconde a mensagem após 5 segundos
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 5000);
-            }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
