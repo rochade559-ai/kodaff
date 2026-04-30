@@ -28,17 +28,21 @@
         .aviso-clique { text-align: center; background: rgba(0,212,255,0.1); padding: 15px 20px; border-radius: 50px; margin-bottom: 25px; font-weight: 700; border: 1px solid rgba(0,212,255,0.3); font-size: 18px; }
         .aviso-clique i { margin-right: 10px; }
         .texto-aproveite { text-align: center; font-size: 22px; margin: 30px 0 30px; font-weight: 700; background: linear-gradient(45deg, #fff, #00d4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .btn-whatsapp-container { text-align: center; margin: 40px 0; }
-        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); padding: 18px 40px; border-radius: 60px; color: white; font-weight: 700; font-size: 20px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; opacity: 0; visibility: hidden; transition: all 0.5s ease; transform: scale(0.9); border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
-        .btn-whatsapp.mostrar { opacity: 1; visibility: visible; transform: scale(1); }
+        .btn-container { text-align: center; margin: 30px 0; }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); padding: 16px 35px; border-radius: 60px; color: white; font-weight: 700; font-size: 18px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
         .btn-whatsapp:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
-        .contador { text-align: center; margin-top: 20px; font-size: 14px; color: #aaa; }
+        .btn-whatsapp-secundario { background: linear-gradient(135deg, #00d4ff, #0099cc); padding: 16px 35px; border-radius: 60px; color: white; font-weight: 700; font-size: 18px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .btn-whatsapp-secundario:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+        .btn-principal { opacity: 0; visibility: hidden; transition: all 0.5s ease; transform: scale(0.9); }
+        .btn-principal.mostrar { opacity: 1; visibility: visible; transform: scale(1); }
+        .contador { text-align: center; margin-top: 10px; margin-bottom: 20px; font-size: 14px; color: #aaa; }
         .contador span { color: #00d4ff; font-weight: bold; font-size: 18px; }
-        .imagem-final { text-align: center; margin: 50px 0 30px; }
+        .imagem-final { text-align: center; margin: 30px 0 30px; }
         .imagem-final img { max-width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .separador { height: 2px; background: linear-gradient(90deg, transparent, #00d4ff, transparent); margin: 40px 0; }
         footer { background: #050505; padding: 40px 0 30px; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 60px; }
         .footer-logo img { height: 50px; width: auto; margin-bottom: 20px; }
-        @media (max-width: 768px) { .nav-links { display: none; } .logo img { height: 40px; } .titulo-video { font-size: 22px; } .texto-aproveite { font-size: 18px; } .btn-whatsapp { font-size: 16px; padding: 14px 28px; } .aviso-clique { font-size: 14px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .logo img { height: 40px; } .titulo-video { font-size: 22px; } .texto-aproveite { font-size: 18px; } .btn-whatsapp, .btn-whatsapp-secundario { font-size: 14px; padding: 12px 20px; } .aviso-clique { font-size: 14px; } }
     </style>
 </head>
 <body>
@@ -96,21 +100,31 @@
                     <span style="font-size: 16px; color: #aaa;">Siga o passo a passo e veja seu TikTokshop decolar!</span>
                 </div>
 
+                <!-- BOTÃO 1 - PRINCIPAL (SÓ APARECE APÓS 35s) -->
+                <div class="btn-container btn-principal" id="btnPrincipalContainer">
+                    <a id="btnWhatsapp" href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp" style="font-size: 24px;"></i> FALE CONOSCO - GARANTA JÁ!
+                    </a>
+                </div>
+
+                <!-- CONTADOR PARA O BOTÃO 1 -->
+                <div class="contador" id="contadorContainer">
+                    ⏱️ Botão disponível em: <span id="contadorSegundos">35</span> segundos
+                </div>
+
                 <!-- IMAGEM NO FINAL (fotoflow.png) -->
                 <div class="imagem-final">
                     <img src="fotoflow.png" alt="Resultados KODAFF">
                 </div>
 
-                <!-- BOTÃO WHATSAPP -->
-                <div class="btn-whatsapp-container">
-                    <a id="btnWhatsapp" href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp" style="font-size: 28px;"></i> FALE CONOSCO - GARANTA JÁ!
-                    </a>
-                </div>
+                <!-- DIVISÓRIO -->
+                <div class="separador"></div>
 
-                <!-- CONTADOR -->
-                <div class="contador">
-                    ⏱️ Botão disponível em: <span id="contadorSegundos">30</span> segundos
+                <!-- BOTÃO 2 - SECUNDÁRIO (SEMPRE VISÍVEL) -->
+                <div class="btn-container">
+                    <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Quero%20seguidores%20de%20outras%20plataformas!%20Me%20ajude%20a%20crescer%20nas%20redes%20sociais." class="btn-whatsapp-secundario" target="_blank">
+                        <i class="fas fa-chart-line" style="font-size: 24px;"></i> CONQUISTE SEGUIDORES REAIS DE OUTRAS PLATAFORMAS
+                    </a>
                 </div>
             </div>
         </section>
@@ -130,17 +144,19 @@
     </footer>
 
     <script>
-        let tempoRestante = 30;
-        const btnWhatsapp = document.getElementById('btnWhatsapp');
+        // BOTÃO 1: aparece após 35 segundos
+        let tempoRestante = 35;
+        const btnPrincipalContainer = document.getElementById('btnPrincipalContainer');
         const contadorSpan = document.getElementById('contadorSegundos');
+        const contadorContainer = document.getElementById('contadorContainer');
 
         const intervalo = setInterval(function() {
             if (tempoRestante <= 0) {
                 clearInterval(intervalo);
                 contadorSpan.textContent = "0";
-                btnWhatsapp.classList.add('mostrar');
-                document.querySelector('.contador').style.opacity = '0';
-                document.querySelector('.contador').style.visibility = 'hidden';
+                btnPrincipalContainer.classList.add('mostrar');
+                contadorContainer.style.opacity = '0';
+                contadorContainer.style.visibility = 'hidden';
             } else {
                 tempoRestante--;
                 contadorSpan.textContent = tempoRestante;
