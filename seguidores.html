@@ -6,204 +6,39 @@
     <title>KODAFF | Compre Seguidores TikTok</title>
     <link rel="icon" type="image/png" href="icon.png">
     
-    <!-- Fontes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a1f 100%);
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00d4ff;
-        }
-
-        .btn-voltar {
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            padding: 12px 28px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-voltar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .seguidores-section {
-            padding-top: 140px;
-            padding-bottom: 80px;
-        }
-
-        .video-container {
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .video-caption {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 18px;
-            color: #ccc;
-        }
-
-        .titulo-video {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-            color: #00d4ff;
-        }
-
-        .aviso-clique {
-            text-align: center;
-            background: rgba(0,212,255,0.1);
-            padding: 12px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            border: 1px solid rgba(0,212,255,0.3);
-        }
-
-        .texto-aproveite {
-            text-align: center;
-            font-size: 20px;
-            margin: 30px 0 30px;
-            font-weight: 600;
-        }
-
-        .btn-whatsapp-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            padding: 18px 40px;
-            border-radius: 60px;
-            color: white;
-            font-weight: 700;
-            font-size: 20px;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease;
-            transform: scale(0.9);
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        .btn-whatsapp.mostrar {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
-
-        .btn-whatsapp:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-        }
-
-        .contador {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        .contador span {
-            color: #00d4ff;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        footer {
-            background: #050505;
-            padding: 40px 0 30px;
-            text-align: center;
-            border-top: 1px solid #1f1f1f;
-            margin-top: 60px;
-        }
-
-        .footer-logo img {
-            height: 50px;
-            width: auto;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .logo img { height: 40px; }
-            .titulo-video { font-size: 22px; }
-            .texto-aproveite { font-size: 18px; }
-            .btn-whatsapp { font-size: 16px; padding: 14px 28px; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #0d1a1f 100%); color: #ffffff; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        header { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo img { height: 50px; width: auto; display: block; }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: #00d4ff; }
+        .btn-voltar { background: linear-gradient(135deg, #00d4ff, #0099cc); padding: 12px 28px; border-radius: 40px; color: white; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-voltar:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+        .seguidores-section { padding-top: 140px; padding-bottom: 80px; }
+        .video-container { max-width: 900px; margin: 0 auto; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(0, 212, 255, 0.3); }
+        .video-caption { text-align: center; margin-top: 30px; font-size: 18px; color: #ccc; }
+        .titulo-video { text-align: center; font-size: 28px; margin-bottom: 30px; color: #00d4ff; }
+        .aviso-clique { text-align: center; background: rgba(0,212,255,0.1); padding: 15px 20px; border-radius: 50px; margin-bottom: 25px; font-weight: 700; border: 1px solid rgba(0,212,255,0.3); font-size: 18px; }
+        .aviso-clique i { margin-right: 10px; }
+        .texto-aproveite { text-align: center; font-size: 22px; margin: 30px 0 30px; font-weight: 700; background: linear-gradient(45deg, #fff, #00d4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .btn-whatsapp-container { text-align: center; margin: 40px 0; }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); padding: 18px 40px; border-radius: 60px; color: white; font-weight: 700; font-size: 20px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; opacity: 0; visibility: hidden; transition: all 0.5s ease; transform: scale(0.9); border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .btn-whatsapp.mostrar { opacity: 1; visibility: visible; transform: scale(1); }
+        .btn-whatsapp:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
+        .contador { text-align: center; margin-top: 20px; font-size: 14px; color: #aaa; }
+        .contador span { color: #00d4ff; font-weight: bold; font-size: 18px; }
+        .imagem-final { text-align: center; margin: 50px 0 30px; }
+        .imagem-final img { max-width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        footer { background: #050505; padding: 40px 0 30px; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 60px; }
+        .footer-logo img { height: 50px; width: auto; margin-bottom: 20px; }
+        @media (max-width: 768px) { .nav-links { display: none; } .logo img { height: 40px; } .titulo-video { font-size: 22px; } .texto-aproveite { font-size: 18px; } .btn-whatsapp { font-size: 16px; padding: 14px 28px; } .aviso-clique { font-size: 14px; } }
     </style>
 </head>
 <body>
@@ -227,48 +62,53 @@
     <main>
         <section class="seguidores-section">
             <div class="container">
-                <!-- TÍTULO -->
+                <!-- TÍTULO CHAMATIVO -->
                 <div class="titulo-video">
-                    🎬 CLIQUE NO VÍDEO E ASSISTA ATÉ O FINAL! 🎬
+                    🔥 ATENÇÃO EMPREENDEDOR! 🔥
                 </div>
 
-                <!-- AVISO PARA CLICAR -->
+                <!-- SUBTÍTULO CLICÁVEL MAIS MARKETING -->
                 <div class="aviso-clique">
-                    👉 ATENÇÃO: Clique no vídeo abaixo e assista até o fim para liberar o botão! 👈
+                    <i class="fas fa-play-circle"></i> 🚀 GANHE SEGUIDORES REAIS E APROVE SEU TIKTOKSHOP HOJE! 🚀<br>
+                    <span style="font-size: 14px;">👇 CLIQUE NO VÍDEO E DESBLOQUEIE O SEGREDO 👇</span>
                 </div>
 
-                <!-- VÍDEO DO YOUTUBE -->
+                <!-- VÍDEO SEM AUTOPLAY -->
                 <div class="video-container">
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                         <iframe 
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=1&controls=1&rel=0"
-                            title="Veja Como Ganha Seguidores no TikTokshop e Aprovar a Sua Conta"
+                            src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=0&controls=1&rel=0"
+                            title="Veja Como Ganha Seguidores no TikTokshop"
                             frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
                 </div>
                 <div class="video-caption">
-                    <i class="fab fa-tiktok" style="color: #00d4ff;"></i> Aprenda a estratégia completa para ganhar seguidores!
+                    <i class="fab fa-tiktok" style="color: #00d4ff;"></i> Estratégia comprovada para bombar no TikTok!
                 </div>
 
-                <!-- TEXTO "APROVEITE" -->
+                <!-- TEXTO MOTIVACIONAL -->
                 <div class="texto-aproveite">
-                    🚀 Aproveite seu TikTokshop Aqui! 🚀<br>
-                    <span style="font-size: 16px; color: #aaa;">Garanta já sua aprovação e comece a vender!</span>
+                    🎯 AQUI É O SEGREDO! 🎯<br>
+                    <span style="font-size: 16px; color: #aaa;">Siga o passo a passo e veja seu TikTokshop decolar!</span>
                 </div>
 
-                <!-- BOTÃO DO WHATSAPP (APARECE APÓS 30 SEGUNDOS) -->
+                <!-- IMAGEM NO FINAL (fotoflow.png) -->
+                <div class="imagem-final">
+                    <img src="fotoflow.png" alt="Resultados KODAFF">
+                </div>
+
+                <!-- BOTÃO WHATSAPP -->
                 <div class="btn-whatsapp-container">
-                    <a id="btnWhatsapp" href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20de%20seguidores%20e%20quero%20aprovar%20meu%20TikTokshop!" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp" style="font-size: 28px;"></i> 
-                        FALE CONOSCO - CLICK AQUI
+                    <a id="btnWhatsapp" href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp" style="font-size: 28px;"></i> FALE CONOSCO - GARANTA JÁ!
                     </a>
                 </div>
 
-                <!-- CONTADOR REGRESSIVO (VISUAL) -->
+                <!-- CONTADOR -->
                 <div class="contador">
                     ⏱️ Botão disponível em: <span id="contadorSegundos">30</span> segundos
                 </div>
@@ -290,19 +130,15 @@
     </footer>
 
     <script>
-        // Função para mostrar o botão após 30 segundos
         let tempoRestante = 30;
         const btnWhatsapp = document.getElementById('btnWhatsapp');
         const contadorSpan = document.getElementById('contadorSegundos');
 
-        // Atualiza o contador visual a cada segundo
         const intervalo = setInterval(function() {
             if (tempoRestante <= 0) {
                 clearInterval(intervalo);
                 contadorSpan.textContent = "0";
-                // Mostra o botão
                 btnWhatsapp.classList.add('mostrar');
-                // Remove o contador da tela após mostrar o botão
                 document.querySelector('.contador').style.opacity = '0';
                 document.querySelector('.contador').style.visibility = 'hidden';
             } else {
@@ -310,9 +146,6 @@
                 contadorSpan.textContent = tempoRestante;
             }
         }, 1000);
-
-        // Garante que o botão só fique clicável após os 30s (já protegido pelo CSS)
-        // Se o usuário tentar clicar antes, não vai conseguir pois o link está invisível
     </script>
 </body>
 </html>
