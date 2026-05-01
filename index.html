@@ -78,6 +78,36 @@
             color: #00d4ff;
         }
 
+        /* Botão FALE CONOSCO do desktop (só aparece fora do menu hambúrguer) */
+        .btn-fale-desktop {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-fale-desktop:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Botão dentro do menu mobile (escondido no desktop) */
+        .btn-fale-mobile {
+            display: none;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
         .menu-hamburguer {
             display: none;
             font-size: 28px;
@@ -85,6 +115,54 @@
             color: white;
             background: none;
             border: none;
+        }
+
+        @media (max-width: 768px) {
+            .btn-fale-desktop {
+                display: none;
+            }
+
+            .menu-hamburguer {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 40px 30px;
+                gap: 30px;
+                transition: left 0.4s ease;
+                z-index: 999;
+                border-right: 1px solid rgba(0, 212, 255, 0.3);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                font-size: 18px;
+                padding: 10px 0;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .btn-fale-mobile {
+                display: block;
+            }
         }
 
         .btn-cta {
@@ -104,7 +182,6 @@
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
         }
 
-        /* Botão Seguidores */
         .btn-seguidores {
             background: linear-gradient(135deg, #f09433, #d62976, #962fbf);
             padding: 18px 40px;
@@ -123,48 +200,6 @@
         .btn-seguidores:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(210, 55, 120, 0.5);
-        }
-
-        @media (max-width: 768px) {
-            .menu-hamburguer {
-                display: block;
-            }
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 70%;
-                height: 100vh;
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                padding: 40px 30px;
-                gap: 30px;
-                transition: left 0.4s ease;
-                z-index: 999;
-                border-right: 1px solid rgba(0, 212, 255, 0.3);
-            }
-            .nav-links.active {
-                left: 0;
-            }
-            .nav-links li {
-                width: 100%;
-            }
-            .nav-links a {
-                display: block;
-                font-size: 18px;
-                padding: 10px 0;
-            }
-            .logo img {
-                height: 40px;
-            }
-            header .btn-cta {
-                display: none;
-            }
-            .btn-seguidores {
-                font-size: 16px;
-                padding: 14px 25px;
-            }
         }
 
         .video-section {
@@ -446,6 +481,10 @@
             .secao-seguidores {
                 padding: 40px 15px;
             }
+            .btn-seguidores {
+                font-size: 16px;
+                padding: 14px 25px;
+            }
         }
     </style>
 </head>
@@ -462,6 +501,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
+                <!-- Menu para desktop e mobile -->
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">INÍCIO</a></li>
                     <li><a href="#video">APRESENTAÇÃO</a></li>
@@ -469,9 +509,12 @@
                     <li><a href="seguidores.html">COMPRE SEGUIDORES</a></li>
                     <li><a href="#projetos">PROJETOS</a></li>
                     <li><a href="#clientes">CLIENTES</a></li>
-                    <li><a href="#contato" class="btn-cta" style="display: inline-block; text-align: center; margin-top: 10px;">FALE CONOSCO</a></li>
+                    <!-- Botão FALE CONOSCO dentro do menu (aparece apenas no mobile) -->
+                    <li><a href="#contato" class="btn-fale-mobile">FALE CONOSCO</a></li>
                 </ul>
-                <a href="#contato" class="btn-cta">FALE CONOSCO</a>
+
+                <!-- Botão FALE CONOSCO do desktop (só aparece no desktop) -->
+                <a href="#contato" class="btn-fale-desktop">FALE CONOSCO</a>
             </nav>
         </div>
     </header>
@@ -571,7 +614,7 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: BOTÃO PARA SEGUIDORES -->
+        <!-- SEÇÃO BOTÃO SEGUIDORES -->
         <div class="container">
             <div class="secao-seguidores">
                 <h3 style="font-size: 28px; margin-bottom: 20px;">🚀 Aumente sua presença digital! 🚀</h3>
