@@ -80,19 +80,87 @@
             margin: 0 auto 40px; font-weight: 400; line-height: 1.5;
         }
 
-        /* --- VÍDEO CENTRAL --- */
-        .video-wrapper {
-            position: relative; max-width: 850px; margin: 0 auto;
-            border-radius: 12px; overflow: hidden; background: #000;
+        /* --- VÍDEO CENTRAL COM CAPA PERSONALIZADA --- */
+        .video-container {
+            position: relative;
+            max-width: 850px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.15), 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            background: #000;
+        }
+        
+        .video-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .video-wrapper::before { /* Efeito de brilho atrás do vídeo */
-            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
-            z-index: -1; filter: blur(10px); opacity: 0.5;
+        
+        .video-thumb:hover {
+            background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
         }
+        
+        .play-icon {
+            font-size: 80px;
+            color: var(--primary);
+            background: rgba(0,0,0,0.6);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+        }
+        
+        .video-thumb:hover .play-icon {
+            transform: scale(1.1);
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .thumb-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 212, 255, 0.5);
+        }
+        
+        .thumb-sub {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
         .ratio-16-9 { position: relative; padding-bottom: 56.25%; height: 0; }
         .ratio-16-9 iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
@@ -175,6 +243,8 @@
             .btn-cta { width: 100%; justify-content: center; padding: 18px 20px; font-size: 18px; }
             .trust-badges { flex-direction: column; gap: 10px; }
             .btn-secundario { width: 100%; justify-content: center; font-size: 13px; }
+            .thumb-text { font-size: 16px; padding: 8px 20px; }
+            .play-icon { width: 80px; height: 80px; font-size: 50px; }
         }
     </style>
 </head>
@@ -209,15 +279,23 @@
                     Assista ao vídeo abaixo até o final para entender exatamente qual a estratégia que as maiores contas usam para destravar as vendas.
                 </p>
 
-                <div class="video-wrapper">
-                    <div class="ratio-16-9">
-                        <iframe 
-                            src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=0&controls=1&rel=0&modestbranding=1" 
-                            title="Veja Como Ganha Seguidores no TikTokshop" 
-                            frameborder="0" 
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                <!-- VÍDEO COM CAPA PERSONALIZADA -->
+                <div class="video-container" id="videoContainer">
+                    <div class="video-wrapper">
+                        <div class="ratio-16-9" id="videoPlaceholder">
+                            <!-- Thumbnail/Capa personalizada -->
+                            <div class="video-thumb" id="videoThumb">
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="thumb-text">
+                                    CLICK AQUI PARA REPRODUZIR
+                                </div>
+                                <div class="thumb-sub">
+                                    <i class="fas fa-clock"></i> Aproveite ao máximo o conteúdo
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -281,8 +359,7 @@
 
     <script>
         // Configuração do Temporizador (VSL Pitch Pitch)
-        // Em páginas de alta conversão, o botão surge no exato momento da "Oferta" no vídeo.
-        let tempoRestante = 35; // Segundos
+        let tempoRestante = 35;
         const btnContainer = document.getElementById('btnPrincipalContainer');
         const contadorSpan = document.getElementById('contadorSegundos');
         const contadorWrapper = document.getElementById('contadorContainer');
@@ -291,19 +368,35 @@
             tempoRestante--;
             
             if (tempoRestante > 0) {
-                // Atualiza o texto do contador formatando com zero à esquerda se menor que 10
                 contadorSpan.textContent = tempoRestante < 10 ? '0' + tempoRestante : tempoRestante;
             } else {
-                // Tempo esgotado: Mostra o botão e esconde o texto do contador suavemente
                 clearInterval(intervalo);
                 contadorWrapper.style.opacity = '0';
                 
                 setTimeout(() => {
                     contadorWrapper.style.display = 'none';
                     btnContainer.classList.add('mostrar');
-                }, 500); // Aguarda o fade out do texto para mostrar o botão
+                }, 500);
             }
         }, 1000);
+
+        // FUNÇÃO PARA REPRODUZIR VÍDEO (CAPA PERSONALIZADA)
+        const videoContainer = document.getElementById('videoContainer');
+        const videoThumb = document.getElementById('videoThumb');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+
+        videoThumb.addEventListener('click', function() {
+            // Remove a capa e insere o iframe do YouTube
+            videoPlaceholder.innerHTML = `
+                <iframe 
+                    src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=1&controls=1&rel=0&modestbranding=1" 
+                    title="Veja Como Ganha Seguidores no TikTokshop" 
+                    frameborder="0" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        });
     </script>
 </body>
 </html>
