@@ -104,7 +104,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -115,7 +115,7 @@
         }
         
         .video-thumb:hover {
-            background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
         }
         
         .play-icon {
@@ -292,7 +292,7 @@
                                     CLICK AQUI PARA REPRODUZIR
                                 </div>
                                 <div class="thumb-sub">
-                                    <i class="fas fa-clock"></i> Aproveite ao máximo o conteúdo
+                                    <i class="fas fa-clock"></i> Assista agora essa oportunidade
                                 </div>
                             </div>
                         </div>
@@ -380,13 +380,13 @@
             }
         }, 1000);
 
-        // FUNÇÃO PARA REPRODUZIR VÍDEO (CAPA PERSONALIZADA)
+        // FUNÇÃO PARA REPRODUZIR VÍDEO AUTOMATICAMENTE AO CLICAR NA CAPA
         const videoContainer = document.getElementById('videoContainer');
         const videoThumb = document.getElementById('videoThumb');
         const videoPlaceholder = document.getElementById('videoPlaceholder');
 
         videoThumb.addEventListener('click', function() {
-            // Remove a capa e insere o iframe do YouTube
+            // Remove a capa e insere o iframe do YouTube com autoplay
             videoPlaceholder.innerHTML = `
                 <iframe 
                     src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=1&controls=1&rel=0&modestbranding=1" 
