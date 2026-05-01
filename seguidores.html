@@ -35,7 +35,6 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
 
-        /* --- HEADER MINIMALISTA (Foco na conversão) --- */
         header { 
             position: fixed; top: 0; width: 100%; 
             background: rgba(3, 3, 5, 0.85); 
@@ -55,7 +54,6 @@
         }
         .btn-voltar:hover { background: white; color: black; }
 
-        /* --- SEÇÃO VSL (VIDEO SALES LETTER) --- */
         .vsl-section { padding-top: 130px; padding-bottom: 60px; text-align: center; }
         
         .super-headline {
@@ -90,7 +88,6 @@
             background: #000;
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.15), 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid rgba(0, 212, 255, 0.3);
-            cursor: pointer;
         }
         
         .video-wrapper {
@@ -171,7 +168,7 @@
         }
         .audio-aviso i { color: var(--primary); }
 
-        /* --- ÁREA DE CONVERSÃO (BOTÃO MÁGICO) --- */
+        /* --- ÁREA DE CONVERSÃO --- */
         .conversion-area { margin-top: 40px; min-height: 150px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         
         .timer-box {
@@ -211,7 +208,6 @@
         .trust-badges span { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
         .trust-badges i { color: var(--whatsapp); }
 
-        /* --- PROVA SOCIAL / IMAGEM --- */
         .social-proof { margin: 60px 0; text-align: center; }
         .social-proof img {
             max-width: 100%; border-radius: 20px; 
@@ -221,7 +217,6 @@
         }
         .social-proof img:hover { transform: translateY(-5px); border-color: rgba(0,212,255,0.2); }
 
-        /* --- BOTÃO SECUNDÁRIO --- */
         .btn-secundario {
             background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid rgba(255,255,255,0.1);
             padding: 16px 30px; border-radius: 40px; font-weight: 600; text-decoration: none;
@@ -229,7 +224,6 @@
         }
         .btn-secundario:hover { background: rgba(0, 212, 255, 0.1); border-color: var(--primary); color: var(--primary); }
 
-        /* --- FOOTER --- */
         footer { background: #020202; padding: 40px 0 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); margin-top: 40px; }
         .footer-logo img { height: 40px; margin-bottom: 20px; opacity: 0.5; }
         .footer-text { font-size: 12px; color: #555; line-height: 1.6; max-width: 600px; margin: 0 auto; }
@@ -306,13 +300,11 @@
                 <!-- ÁREA DE CONVERSÃO -->
                 <div class="conversion-area">
                     
-                    <!-- Contador Mágico -->
                     <div class="timer-box" id="contadorContainer">
                         <i class="fas fa-lock" style="margin-right: 5px; opacity: 0.7;"></i> 
                         Seu acesso exclusivo será liberado em <span id="contadorSegundos">35</span> segundos...
                     </div>
 
-                    <!-- Botão Principal (Oculto inicialmente) -->
                     <div class="btn-principal" id="btnPrincipalContainer">
                         <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" target="_blank" class="btn-cta">
                             <i class="fab fa-whatsapp" style="font-size: 28px;"></i>
@@ -323,7 +315,6 @@
                         </a>
                     </div>
                     
-                    <!-- Badges de Confiança (Aparecem junto com o botão) -->
                     <div class="trust-badges">
                         <span><i class="fas fa-check-circle"></i> Método 100% Seguro</span>
                         <span><i class="fas fa-shield-alt"></i> Seguidores Reais</span>
@@ -358,7 +349,7 @@
     </footer>
 
     <script>
-        // Configuração do Temporizador (VSL Pitch Pitch)
+        // Temporizador
         let tempoRestante = 35;
         const btnContainer = document.getElementById('btnPrincipalContainer');
         const contadorSpan = document.getElementById('contadorSegundos');
@@ -380,7 +371,7 @@
             }
         }, 1000);
 
-        // FUNÇÃO PARA REPRODUZIR VÍDEO AUTOMATICAMENTE AO CLICAR NA CAPA
+        // FUNÇÃO: ao clicar na capa, ela SOME e o vídeo começa a REPRODUZIR
         const videoThumb = document.getElementById('videoThumb');
         const videoPlaceholder = document.getElementById('videoPlaceholder');
 
@@ -391,7 +382,7 @@
                     src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=1&controls=1&rel=0&modestbranding=1" 
                     title="Veja Como Ganha Seguidores no TikTokshop" 
                     frameborder="0" 
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             `;
