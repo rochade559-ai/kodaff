@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="google-site-verification" content="03r7B1yiaWIuP5jt3a5lR6ULKWUqRn1cJzK-QSy8A8Y">
     <title>KODAFF | Tecnologia & Marketing</title>
     <link rel="icon" type="image/png" href="icon.png">
@@ -52,6 +52,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .logo img {
@@ -77,6 +78,15 @@
             color: #00d4ff;
         }
 
+        .menu-hamburguer {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+        }
+
         .btn-cta {
             background: linear-gradient(135deg, #00d4ff, #0099cc);
             padding: 12px 28px;
@@ -92,6 +102,69 @@
         .btn-cta:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Botão Seguidores */
+        .btn-seguidores {
+            background: linear-gradient(135deg, #f09433, #d62976, #962fbf);
+            padding: 18px 40px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-seguidores:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(210, 55, 120, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .menu-hamburguer {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 40px 30px;
+                gap: 30px;
+                transition: left 0.4s ease;
+                z-index: 999;
+                border-right: 1px solid rgba(0, 212, 255, 0.3);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                font-size: 18px;
+                padding: 10px 0;
+            }
+            .logo img {
+                height: 40px;
+            }
+            header .btn-cta {
+                display: none;
+            }
+            .btn-seguidores {
+                font-size: 16px;
+                padding: 14px 25px;
+            }
         }
 
         .video-section {
@@ -290,6 +363,15 @@
             color: #ccc;
         }
 
+        .secao-seguidores {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0d1a1f, #0a0a0a);
+            margin: 40px 0;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
         footer {
             background: #050505;
             padding: 50px 0 30px;
@@ -346,26 +428,23 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .logo img {
-                height: 40px;
-            }
-            .section-title {
-                font-size: 32px;
-            }
             .home-content h1 {
                 font-size: 36px;
             }
             .home-content h2 {
                 font-size: 22px;
             }
+            .section-title {
+                font-size: 32px;
+            }
             .footer-logo img {
                 height: 45px;
             }
             .instagram-preview-item {
                 max-width: 150px;
+            }
+            .secao-seguidores {
+                padding: 40px 15px;
             }
         }
     </style>
@@ -378,13 +457,19 @@
                 <div class="logo">
                     <img src="logomarca.png" alt="KODAFF">
                 </div>
-                <ul class="nav-links">
+                
+                <button class="menu-hamburguer" id="menuHamburguer">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">INÍCIO</a></li>
                     <li><a href="#video">APRESENTAÇÃO</a></li>
                     <li><a href="#servicos">SERVIÇOS</a></li>
                     <li><a href="seguidores.html">COMPRE SEGUIDORES</a></li>
                     <li><a href="#projetos">PROJETOS</a></li>
                     <li><a href="#clientes">CLIENTES</a></li>
+                    <li><a href="#contato" class="btn-cta" style="display: inline-block; text-align: center; margin-top: 10px;">FALE CONOSCO</a></li>
                 </ul>
                 <a href="#contato" class="btn-cta">FALE CONOSCO</a>
             </nav>
@@ -402,7 +487,6 @@
             </div>
         </section>
 
-        <!-- SEÇÃO VÍDEO YouTube -->
         <section id="video">
             <div class="container video-wrapper">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 32px;">
@@ -426,26 +510,10 @@
                 <h2 class="section-title">NOSSOS <span style="color:#00d4ff">SERVIÇOS</span></h2>
                 <p class="section-sub">CRIAÇÃO DE SOFTWARE, APLICATIVOS E ESTRATÉGIAS QUE CONECTAM SUA MARCA AO FUTURO.</p>
                 <div class="cards-grid">
-                    <div class="card">
-                        <i class="fas fa-code"></i>
-                        <h3>DESENVOLVIMENTO WEB</h3>
-                        <p>Sites institucionais, sistemas sob medida e plataformas escaláveis.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>APLICATIVOS MOBILE</h3>
-                        <p>Apps nativos e híbridos para iOS e Android, com performance e UX.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>MARKETING DIGITAL</h3>
-                        <p>SEO, tráfego pago, redes sociais e estratégias de crescimento.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-robot"></i>
-                        <h3>AUTOMAÇÃO & IA</h3>
-                        <p>Integração de inteligência artificial e automação de processos.</p>
-                    </div>
+                    <div class="card"><i class="fas fa-code"></i><h3>DESENVOLVIMENTO WEB</h3><p>Sites institucionais, sistemas sob medida e plataformas escaláveis.</p></div>
+                    <div class="card"><i class="fas fa-mobile-alt"></i><h3>APLICATIVOS MOBILE</h3><p>Apps nativos e híbridos para iOS e Android, com performance e UX.</p></div>
+                    <div class="card"><i class="fas fa-chart-line"></i><h3>MARKETING DIGITAL</h3><p>SEO, tráfego pago, redes sociais e estratégias de crescimento.</p></div>
+                    <div class="card"><i class="fas fa-robot"></i><h3>AUTOMAÇÃO & IA</h3><p>Integração de inteligência artificial e automação de processos.</p></div>
                 </div>
             </div>
         </section>
@@ -486,41 +554,33 @@
             </div>
         </section>
 
-        <!-- SEÇÃO DO INSTAGRAM -->
         <section id="instagram" class="carousel-section" style="background: #0a0a0a;">
             <div class="container">
-                <h2 class="carousel-title">
-                    <i class="fab fa-instagram" style="color: #E4405F;"></i> 
-                    SIGA A KODAFF NO INSTAGRAM
-                </h2>
+                <h2 class="carousel-title"><i class="fab fa-instagram" style="color: #E4405F;"></i> SIGA A KODAFF NO INSTAGRAM</h2>
                 <div style="text-align: center; margin-bottom: 30px;">
                     <a href="https://www.instagram.com/kodaffoficial" target="_blank" rel="noopener noreferrer" class="instagram-button">
-                        <i class="fab fa-instagram" style="font-size: 24px;"></i> 
-                        Acessar perfil @kodaffoficial
+                        <i class="fab fa-instagram" style="font-size: 24px;"></i> Acessar perfil @kodaffoficial
                     </a>
                 </div>
-
-                <!-- Prévia dos posts -->
                 <div class="instagram-preview">
-                    <div class="instagram-preview-item">
-                        <img src="https://placehold.co/300x300/1a1a2e/00d4ff?text=Post+KODAFF" alt="Post recente">
-                        <p>Confira nossos cases</p>
-                    </div>
-                    <div class="instagram-preview-item">
-                        <img src="https://placehold.co/300x300/16213e/00d4ff?text=Tecnologia" alt="Tecnologia">
-                        <p>Inovação em software</p>
-                    </div>
-                    <div class="instagram-preview-item">
-                        <img src="https://placehold.co/300x300/0f3460/00d4ff?text=Marketing" alt="Marketing">
-                        <p>Estratégias digitais</p>
-                    </div>
-                    <div class="instagram-preview-item">
-                        <img src="https://placehold.co/300x300/1a1a2e/00d4ff?text=Resultados" alt="Resultados">
-                        <p>Resultados reais</p>
-                    </div>
+                    <div class="instagram-preview-item"><img src="https://placehold.co/300x300/1a1a2e/00d4ff?text=Post+KODAFF" alt="Post recente"><p>Confira nossos cases</p></div>
+                    <div class="instagram-preview-item"><img src="https://placehold.co/300x300/16213e/00d4ff?text=Tecnologia" alt="Tecnologia"><p>Inovação em software</p></div>
+                    <div class="instagram-preview-item"><img src="https://placehold.co/300x300/0f3460/00d4ff?text=Marketing" alt="Marketing"><p>Estratégias digitais</p></div>
+                    <div class="instagram-preview-item"><img src="https://placehold.co/300x300/1a1a2e/00d4ff?text=Resultados" alt="Resultados"><p>Resultados reais</p></div>
                 </div>
             </div>
         </section>
+
+        <!-- NOVA SEÇÃO: BOTÃO PARA SEGUIDORES -->
+        <div class="container">
+            <div class="secao-seguidores">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">🚀 Aumente sua presença digital! 🚀</h3>
+                <p style="font-size: 18px; margin-bottom: 30px; color: #ccc;">Conquiste seguidores reais e engajamento nas redes sociais de forma rápida e segura.</p>
+                <a href="seguidores.html" class="btn-seguidores">
+                    <i class="fab fa-instagram"></i> OBTENHA NOVOS SEGUIDORES NAS REDES SOCIAIS - CLIQUE AQUI SEM COMPROMISSO
+                </a>
+            </div>
+        </div>
 
         <section id="contato" style="padding: 70px 0; background: linear-gradient(145deg, #0a0a0a, #061218);">
             <div class="container" style="text-align: center;">
@@ -533,18 +593,13 @@
 
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <img src="logomarca.png" alt="KODAFF">
-            </div>
+            <div class="footer-logo"><img src="logomarca.png" alt="KODAFF"></div>
             <p>TECNOLOGIA E MARKETING QUE GERAM RESULTADOS REAIS.</p>
-            
-            <!-- INFORMAÇÕES DA EMPRESA -->
             <div style="margin: 20px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <p style="margin: 5px 0;"><strong>KODAFF</strong> - Tecnologia e Marketing</p>
-                <p style="margin: 5px 0; font-size: 14px; color: #aaa;">CNPJ: 61.771.229/0001-14</p>
-                <p style="margin: 5px 0; font-size: 14px; color: #aaa;">E-mail: <a href="mailto:atendimento@kodaff.com" style="color: #00d4ff;">atendimento@kodaff.com</a></p>
+                <p><strong>KODAFF</strong> - Tecnologia e Marketing</p>
+                <p style="font-size: 14px; color: #aaa;">CNPJ: 61.771.229/0001-14</p>
+                <p style="font-size: 14px; color: #aaa;">E-mail: <a href="mailto:atendimento@kodaff.com" style="color: #00d4ff;">atendimento@kodaff.com</a></p>
             </div>
-            
             <div class="social-icons">
                 <a href="https://www.instagram.com/kodaffoficial" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -555,28 +610,34 @@
         </div>
     </footer>
 
-    <!-- Botão WhatsApp com mensagem pré-programada -->
     <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20os%20serviços%20de%20tecnologia%20e%20marketing." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const swiperProjetos = new Swiper('.mySwiperProjetos', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 3500, disableOnInteraction: false },
+        const menuHamburguer = document.getElementById('menuHamburguer');
+        const navLinks = document.getElementById('navLinks');
+
+        menuHamburguer.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        new Swiper('.mySwiperProjetos', {
+            slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 3500 },
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             pagination: { el: '.swiper-pagination', clickable: true },
             breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
 
-        const swiperClientes = new Swiper('.mySwiperClientes', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
+        new Swiper('.mySwiperClientes', {
+            slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 4000 },
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             pagination: { el: '.swiper-pagination', clickable: true },
             breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
