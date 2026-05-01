@@ -3,46 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODAFF | Compre Seguidores TikTok</title>
+    <title>KODAFF | Estratégia TikTok Shop</title>
     <link rel="icon" type="image/png" href="icon.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Fontes Google: Inter para leitura e Montserrat para Headlines de impacto -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        :root {
+            --bg-dark: #030305;
+            --bg-card: rgba(15, 15, 20, 0.8);
+            --primary: #00d4ff;
+            --primary-glow: rgba(0, 212, 255, 0.4);
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+            --text-main: #ffffff;
+            --text-muted: #8a8a9e;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #0d1a1f 100%); color: #ffffff; min-height: 100vh; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-        header { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .nav-links { display: flex; gap: 40px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: #00d4ff; }
-        .btn-voltar { background: linear-gradient(135deg, #00d4ff, #0099cc); padding: 12px 28px; border-radius: 40px; color: white; font-weight: 600; text-decoration: none; transition: 0.3s; }
-        .btn-voltar:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
-        .seguidores-section { padding-top: 140px; padding-bottom: 80px; }
-        .video-container { max-width: 900px; margin: 0 auto; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(0, 212, 255, 0.3); }
-        .video-caption { text-align: center; margin-top: 30px; font-size: 18px; color: #ccc; }
-        .titulo-video { text-align: center; font-size: 28px; margin-bottom: 30px; color: #00d4ff; }
-        .aviso-clique { text-align: center; background: rgba(0,212,255,0.1); padding: 15px 20px; border-radius: 50px; margin-bottom: 25px; font-weight: 700; border: 1px solid rgba(0,212,255,0.3); font-size: 18px; }
-        .aviso-clique i { margin-right: 10px; }
-        .texto-aproveite { text-align: center; font-size: 22px; margin: 30px 0 30px; font-weight: 700; background: linear-gradient(45deg, #fff, #00d4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .btn-container { text-align: center; margin: 30px 0; }
-        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); padding: 16px 35px; border-radius: 60px; color: white; font-weight: 700; font-size: 18px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
-        .btn-whatsapp:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
-        .btn-whatsapp-secundario { background: linear-gradient(135deg, #00d4ff, #0099cc); padding: 16px 35px; border-radius: 60px; color: white; font-weight: 700; font-size: 18px; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 12px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
-        .btn-whatsapp-secundario:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
-        .btn-principal { opacity: 0; visibility: hidden; transition: all 0.5s ease; transform: scale(0.9); }
-        .btn-principal.mostrar { opacity: 1; visibility: visible; transform: scale(1); }
-        .contador { text-align: center; margin-top: 10px; margin-bottom: 20px; font-size: 14px; color: #aaa; }
-        .contador span { color: #00d4ff; font-weight: bold; font-size: 18px; }
-        .imagem-final { text-align: center; margin: 30px 0 30px; }
-        .imagem-final img { max-width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
-        .separador { height: 2px; background: linear-gradient(90deg, transparent, #00d4ff, transparent); margin: 40px 0; }
-        footer { background: #050505; padding: 40px 0 30px; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 60px; }
-        .footer-logo img { height: 50px; width: auto; margin-bottom: 20px; }
-        @media (max-width: 768px) { .nav-links { display: none; } .logo img { height: 40px; } .titulo-video { font-size: 22px; } .texto-aproveite { font-size: 18px; } .btn-whatsapp, .btn-whatsapp-secundario { font-size: 14px; padding: 12px 20px; } .aviso-clique { font-size: 14px; } }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
+            color: var(--text-main); 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+
+        /* --- HEADER MINIMALISTA (Foco na conversão) --- */
+        header { 
+            position: fixed; top: 0; width: 100%; 
+            background: rgba(3, 3, 5, 0.85); 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; padding: 12px 0; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 40px; display: block; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn-voltar { 
+            font-size: 13px; font-weight: 600; text-decoration: none; color: white;
+            border: 1px solid rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 30px;
+            transition: 0.3s;
+        }
+        .btn-voltar:hover { background: white; color: black; }
+
+        /* --- SEÇÃO VSL (VIDEO SALES LETTER) --- */
+        .vsl-section { padding-top: 130px; padding-bottom: 60px; text-align: center; }
+        
+        .super-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px; font-weight: 800; letter-spacing: 2px;
+            color: #ff3b3b; text-transform: uppercase; margin-bottom: 15px;
+            display: inline-block; background: rgba(255, 59, 59, 0.1);
+            padding: 6px 15px; border-radius: 20px; border: 1px solid rgba(255, 59, 59, 0.2);
+        }
+
+        .main-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px; font-weight: 800; line-height: 1.2; margin-bottom: 20px;
+        }
+        .main-headline span {
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text; color: transparent;
+        }
+
+        .sub-headline {
+            font-size: 18px; color: var(--text-muted); max-width: 800px; 
+            margin: 0 auto 40px; font-weight: 400; line-height: 1.5;
+        }
+
+        /* --- VÍDEO CENTRAL --- */
+        .video-wrapper {
+            position: relative; max-width: 850px; margin: 0 auto;
+            border-radius: 12px; overflow: hidden; background: #000;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.15), 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            z-index: 2;
+        }
+        .video-wrapper::before { /* Efeito de brilho atrás do vídeo */
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            z-index: -1; filter: blur(10px); opacity: 0.5;
+        }
+        .ratio-16-9 { position: relative; padding-bottom: 56.25%; height: 0; }
+        .ratio-16-9 iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .audio-aviso {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+            font-size: 14px; color: var(--text-muted); background: var(--bg-card);
+            padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .audio-aviso i { color: var(--primary); }
+
+        /* --- ÁREA DE CONVERSÃO (BOTÃO MÁGICO) --- */
+        .conversion-area { margin-top: 40px; min-height: 150px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        
+        .timer-box {
+            font-size: 15px; color: var(--text-muted); font-weight: 500;
+            transition: all 0.5s ease;
+        }
+        .timer-box span { color: var(--primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+        .btn-principal {
+            opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95);
+            position: absolute; width: 100%; transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-principal.mostrar { opacity: 1; visibility: visible; transform: translateY(0) scale(1); position: relative; }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark));
+            color: white; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800;
+            text-decoration: none; padding: 22px 40px; border-radius: 50px;
+            display: inline-flex; align-items: center; gap: 15px;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3); border: none;
+            cursor: pointer; position: relative; overflow: hidden;
+            animation: pulse-ws 2s infinite;
+        }
+        .btn-cta:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5); }
+        .btn-cta span { font-size: 12px; display: block; font-weight: 500; opacity: 0.9; margin-top: 2px; }
+        
+        @keyframes pulse-ws {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .trust-badges {
+            display: flex; justify-content: center; gap: 20px; margin-top: 15px; opacity: 0; transition: opacity 1s ease;
+        }
+        .btn-principal.mostrar + .trust-badges { opacity: 1; }
+        .trust-badges span { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+        .trust-badges i { color: var(--whatsapp); }
+
+        /* --- PROVA SOCIAL / IMAGEM --- */
+        .social-proof { margin: 60px 0; text-align: center; }
+        .social-proof img {
+            max-width: 100%; border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+        .social-proof img:hover { transform: translateY(-5px); border-color: rgba(0,212,255,0.2); }
+
+        /* --- BOTÃO SECUNDÁRIO --- */
+        .btn-secundario {
+            background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 30px; border-radius: 40px; font-weight: 600; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 15px; transition: 0.3s;
+        }
+        .btn-secundario:hover { background: rgba(0, 212, 255, 0.1); border-color: var(--primary); color: var(--primary); }
+
+        /* --- FOOTER --- */
+        footer { background: #020202; padding: 40px 0 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); margin-top: 40px; }
+        .footer-logo img { height: 40px; margin-bottom: 20px; opacity: 0.5; }
+        .footer-text { font-size: 12px; color: #555; line-height: 1.6; max-width: 600px; margin: 0 auto; }
+        .footer-text a { color: #777; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .vsl-section { padding-top: 100px; }
+            .main-headline { font-size: 26px; }
+            .sub-headline { font-size: 15px; padding: 0 10px; }
+            .btn-cta { width: 100%; justify-content: center; padding: 18px 20px; font-size: 18px; }
+            .trust-badges { flex-direction: column; gap: 10px; }
+            .btn-secundario { width: 100%; justify-content: center; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -53,79 +186,84 @@
                 <div class="logo"><img src="logomarca.png" alt="KODAFF"></div>
                 <ul class="nav-links">
                     <li><a href="index.html">INÍCIO</a></li>
-                    <li><a href="index.html#video">APRESENTAÇÃO</a></li>
                     <li><a href="index.html#servicos">SERVIÇOS</a></li>
-                    <li><a href="seguidores.html">COMPRE SEGUIDORES</a></li>
-                    <li><a href="index.html#clientes">CLIENTES</a></li>
                 </ul>
-                <a href="index.html#contato" class="btn-voltar">VOLTAR</a>
+                <a href="index.html#contato" class="btn-voltar"><i class="fas fa-arrow-left"></i> VOLTAR</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="seguidores-section">
+        <section class="vsl-section">
             <div class="container">
-                <!-- TÍTULO CHAMATIVO -->
-                <div class="titulo-video">
-                    🔥 ATENÇÃO EMPREENDEDOR! 🔥
+                
+                <div class="super-headline">
+                    <i class="fas fa-fire"></i> Atenção Empreendedor
                 </div>
 
-                <!-- SUBTÍTULO CLICÁVEL MAIS MARKETING -->
-                <div class="aviso-clique">
-                    <i class="fas fa-play-circle"></i> 🚀 GANHE SEGUIDORES REAIS E APROVE SEU TIKTOKSHOP HOJE! 🚀<br>
-                    <span style="font-size: 14px;">👇 CLIQUE NO VÍDEO E DESBLOQUEIE O SEGREDO 👇</span>
-                </div>
+                <h1 class="main-headline">
+                    Descubra o segredo para conseguir seguidores reais e <span>aprovar seu TikTok Shop hoje</span>
+                </h1>
+                
+                <p class="sub-headline">
+                    Assista ao vídeo abaixo até o final para entender exatamente qual a estratégia que as maiores contas usam para destravar as vendas.
+                </p>
 
-                <!-- VÍDEO SEM AUTOPLAY -->
-                <div class="video-container">
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <div class="video-wrapper">
+                    <div class="ratio-16-9">
                         <iframe 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=0&controls=1&rel=0"
-                            title="Veja Como Ganha Seguidores no TikTokshop"
-                            frameborder="0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            src="https://www.youtube.com/embed/aiNho9jIEgA?autoplay=0&controls=1&rel=0&modestbranding=1" 
+                            title="Veja Como Ganha Seguidores no TikTokshop" 
+                            frameborder="0" 
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                         </iframe>
                     </div>
                 </div>
-                <div class="video-caption">
-                    <i class="fab fa-tiktok" style="color: #00d4ff;"></i> Estratégia comprovada para bombar no TikTok!
+                
+                <div class="audio-aviso">
+                    <i class="fas fa-volume-up"></i> Certifique-se de que o som está ligado
                 </div>
 
-                <!-- TEXTO MOTIVACIONAL -->
-                <div class="texto-aproveite">
-                    🎯 AQUI É O SEGREDO! 🎯<br>
-                    <span style="font-size: 16px; color: #aaa;">Siga o passo a passo e veja seu TikTokshop decolar!</span>
+                <!-- ÁREA DE CONVERSÃO -->
+                <div class="conversion-area">
+                    
+                    <!-- Contador Mágico -->
+                    <div class="timer-box" id="contadorContainer">
+                        <i class="fas fa-lock" style="margin-right: 5px; opacity: 0.7;"></i> 
+                        Seu acesso exclusivo será liberado em <span id="contadorSegundos">35</span> segundos...
+                    </div>
+
+                    <!-- Botão Principal (Oculto inicialmente) -->
+                    <div class="btn-principal" id="btnPrincipalContainer">
+                        <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" target="_blank" class="btn-cta">
+                            <i class="fab fa-whatsapp" style="font-size: 28px;"></i>
+                            <div>
+                                QUERO APROVAR MEU TIKTOK SHOP
+                                <span>Atendimento imediato com um especialista</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Badges de Confiança (Aparecem junto com o botão) -->
+                    <div class="trust-badges">
+                        <span><i class="fas fa-check-circle"></i> Método 100% Seguro</span>
+                        <span><i class="fas fa-shield-alt"></i> Seguidores Reais</span>
+                        <span><i class="fas fa-bolt"></i> Entrega Rápida</span>
+                    </div>
+
                 </div>
 
-                <!-- BOTÃO 1 - PRINCIPAL (SÓ APARECE APÓS 35s) -->
-                <div class="btn-container btn-principal" id="btnPrincipalContainer">
-                    <a id="btnWhatsapp" href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Vi%20o%20vídeo%20e%20quero%20aprovar%20meu%20TikTokshop!" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp" style="font-size: 24px;"></i> FALE CONOSCO - GARANTA JÁ!
+                <div class="social-proof">
+                    <img src="fotoflow.png" alt="Resultados reais de engajamento">
+                </div>
+
+                <div style="margin-top: 50px;">
+                    <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Quero%20seguidores%20de%20outras%20plataformas!%20Me%20ajude%20a%20crescer%20nas%20redes%20sociais." target="_blank" class="btn-secundario">
+                        <i class="fas fa-plus-circle"></i> Precisa de seguidores para outras redes sociais? Clique aqui
                     </a>
                 </div>
 
-                <!-- CONTADOR PARA O BOTÃO 1 -->
-                <div class="contador" id="contadorContainer">
-                    ⏱️ Botão disponível em: <span id="contadorSegundos">35</span> segundos
-                </div>
-
-                <!-- IMAGEM NO FINAL (fotoflow.png) -->
-                <div class="imagem-final">
-                    <img src="fotoflow.png" alt="Resultados KODAFF">
-                </div>
-
-                <!-- DIVISÓRIO -->
-                <div class="separador"></div>
-
-                <!-- BOTÃO 2 - SECUNDÁRIO (SEMPRE VISÍVEL) -->
-                <div class="btn-container">
-                    <a href="https://wa.me/5511970341374?text=Olá%20KODAFF!%20Quero%20seguidores%20de%20outras%20plataformas!%20Me%20ajude%20a%20crescer%20nas%20redes%20sociais." class="btn-whatsapp-secundario" target="_blank">
-                        <i class="fas fa-chart-line" style="font-size: 24px;"></i> CONQUISTE SEGUIDORES REAIS DE OUTRAS PLATAFORMAS
-                    </a>
-                </div>
             </div>
         </section>
     </main>
@@ -133,33 +271,37 @@
     <footer>
         <div class="container">
             <div class="footer-logo"><img src="logomarca.png" alt="KODAFF"></div>
-            <p>TECNOLOGIA E MARKETING QUE GERAM RESULTADOS REAIS.</p>
-            <div style="margin: 20px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <p><strong>KODAFF</strong> - Tecnologia e Marketing</p>
-                <p style="font-size: 14px; color: #aaa;">CNPJ: 61.771.229/0001-14</p>
-                <p style="font-size: 14px; color: #aaa;">E-mail: <a href="mailto:atendimento@kodaff.com" style="color: #00d4ff;">atendimento@kodaff.com</a></p>
+            <div class="footer-text">
+                <p><strong>KODAFF - Tecnologia e Marketing</strong> | CNPJ: 61.771.229/0001-14</p>
+                <p>Este site não faz parte do site do TikTok ou da ByteDance. Além disso, este site não é endossado pelo TikTok de nenhuma maneira. TIKTOK é uma marca comercial da BYTEDANCE.</p>
+                <p style="margin-top: 15px;">&copy; 2025 Kodaff. Todos os direitos reservados. | <a href="mailto:atendimento@kodaff.com">atendimento@kodaff.com</a></p>
             </div>
-            <p style="margin-top: 30px; font-size: 14px;">&copy; 2025 KODAFF - INOVAÇÃO EM SOFTWARE E MARKETING. TODOS OS DIREITOS RESERVADOS.</p>
         </div>
     </footer>
 
     <script>
-        // BOTÃO 1: aparece após 35 segundos
-        let tempoRestante = 35;
-        const btnPrincipalContainer = document.getElementById('btnPrincipalContainer');
+        // Configuração do Temporizador (VSL Pitch Pitch)
+        // Em páginas de alta conversão, o botão surge no exato momento da "Oferta" no vídeo.
+        let tempoRestante = 35; // Segundos
+        const btnContainer = document.getElementById('btnPrincipalContainer');
         const contadorSpan = document.getElementById('contadorSegundos');
-        const contadorContainer = document.getElementById('contadorContainer');
+        const contadorWrapper = document.getElementById('contadorContainer');
 
-        const intervalo = setInterval(function() {
-            if (tempoRestante <= 0) {
-                clearInterval(intervalo);
-                contadorSpan.textContent = "0";
-                btnPrincipalContainer.classList.add('mostrar');
-                contadorContainer.style.opacity = '0';
-                contadorContainer.style.visibility = 'hidden';
+        const intervalo = setInterval(() => {
+            tempoRestante--;
+            
+            if (tempoRestante > 0) {
+                // Atualiza o texto do contador formatando com zero à esquerda se menor que 10
+                contadorSpan.textContent = tempoRestante < 10 ? '0' + tempoRestante : tempoRestante;
             } else {
-                tempoRestante--;
-                contadorSpan.textContent = tempoRestante;
+                // Tempo esgotado: Mostra o botão e esconde o texto do contador suavemente
+                clearInterval(intervalo);
+                contadorWrapper.style.opacity = '0';
+                
+                setTimeout(() => {
+                    contadorWrapper.style.display = 'none';
+                    btnContainer.classList.add('mostrar');
+                }, 500); // Aguarda o fade out do texto para mostrar o botão
             }
         }, 1000);
     </script>
